@@ -1,34 +1,44 @@
 {block content}
-  <body>
-    <div class="container">
-      <div class="page-header">
-        <h1>Legacy Tasking System</h1>
-      </div>
+    <body>
+        <div class="container">
+            <div class="page-header">
+                <h1>Legacy Tasking System</h1>
+            </div>
 
-	  <table class="table table-bordered table-hover">
-		  <thead>
-			  <tr>
-				  <th>ID</th>
-				  <th>Title</th>
-				  <th>Status</th>
-				  <th>Parent ID</th>
-				  <th></th>
-			  </tr>
-		  </thead>
-		  <tbody>
-			  {foreach $tasks as $task}
-			  <tr>
-			  	<td>{$task->id}</td>
-			  	<td>{$task->title}</td>
-			  	<td>{$task->status}</td>
-			  	<td>{$task->parent_id}</td>
-			  	<td></td>
-			  </tr>
-			  {/foreach}
-		  </tbody>
-	  </table>
-	  
-
-    </div>
-  </body>
+            <div n:snippet="allTasks" class="list-group list-group-root well">
+                {foreach $tasks as $task}
+                    <span n:snippet="$task['id']" class="list-group-item" style="padding-left: {15+$task['depth']*30}px">
+                        <i class="glyphicon glyphicon-asterisk"></i>
+                        <b>
+                            <span class="badge" title="ID">{$task['id']}</span>
+                            {$task['title']}
+                            {if $task['status'] == 0}
+                                <span class="label label-default">In Progress</span>
+                            {elseif $task['status'] == 1}
+                                <span class="label label-primary">Done</span>
+                            {else}
+                                <span class="label label-success">Complete</span>
+                            {/if}
+                        </b>
+                        <div class="pull-right">
+                            <div class="col-md-2">
+                                {if $task['status']}
+                                    <a n:href="markInProgress! $task['id']" title="Mark In Progress"><i class="fa fa-check-square-o"></i></a>
+                                {else}
+                                    <a n:href="markDone! $task['id']" title="Mark Done"><i class="fa fa-square-o"></i></a>
+                                {/if}
+                            </div>
+                            <div class="col-md-2 text-center">
+                                {if !$task['childrenCount']}
+                                    <button type="button" class="btn btn-xs btn-danger" title="Delete"><i class="fa fa-trash-o fa-3"></i></button>
+                                {else}
+                                    <button type="button" class="btn btn-xs btn-danger" title="Delete Children First" disabled><i class="fa fa-trash-o fa-3"></i></button>
+                                {/if}
+                            </div>
+                        </div>
+                    </span>
+                {/foreach}
+            </div>
+        </div>
+    </body>
 {/block}
