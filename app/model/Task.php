@@ -18,6 +18,9 @@ class Task extends Nette\Object{
         $this->database = $database;
     }
 
+    /**
+     * DFS recursion to construct flat (1D) array of a tree
+     * @return 1D Array arranged as a flat tree */
     private function buildFlatTree($tasks, $parentId=0, $depth=0){
         $branch = array();
         foreach($tasks as $task){
@@ -108,6 +111,10 @@ class Task extends Nette\Object{
         return $siblings;
     }
 
+    /**
+     * @param task
+     * This function returns true if all siblings have status complete, false otherwise
+     * @return boolean */
     private function areSiblingsComplete($task){
         $siblings = $this->getSiblings($task);
         foreach($siblings as $sibling){
@@ -197,6 +204,9 @@ class Task extends Nette\Object{
         return $response;
     }
 
+    /**
+     * Returns true if updating $task's parentId to $newParentId will cause circular dependancy, false otherwise
+     * @return boolean */
     private function willCauseCircularDependancy($task, $newParentId){
         if($task->parent_id == $newParentId){ // Parent is not changed
             return false;
@@ -225,8 +235,7 @@ class Task extends Nette\Object{
      * 2- Since we know we will edit. Before edit, call function markDoneParentsComplete
      * 3- After editing parent ID, if the task's status is not complete and parent is complete, revert parents to done.
      *
-     * NOTE: if the tasks being edited has status complete, it will not affect any statuses in the task list.  
-    */
+     * NOTE: if the tasks being edited has status complete, it will not affect any statuses in the task list. */
     public function editTask($taskId, $newTaskName, $newParentId){
         $task = $this->getTaskById($taskId);
         if(!$this->willCauseCircularDependancy($task, $newParentId)){ // Validate (procedure 1 -- Check comment above function)
