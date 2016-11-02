@@ -1,6 +1,6 @@
 Database:
 
--	Run the  following SQL statement in MySQL Database:
+*Run the  following SQL statement in MySQL Database:
 
 ```SQL
     CREATE TABLE IF NOT EXISTS `tasks` ( 
@@ -14,13 +14,13 @@ Database:
 
 Setting up Database in the project:
 
--	Open file: /app/config/config.local.neon
--	Update your parameters.
+*Open file: /app/config/config.local.neon
+*Update your parameters.
 
 Backend
 
-I use Nette PHP framework (Documentation: https://doc.nette.org/en/2.4/). 
+*I use Nette PHP framework (Documentation: https://doc.nette.org/en/2.4/). 
 
 Web host
 
-The project is hosted on: https://legacy-tasking-system.000webhostapp.com/www/
+*The project is hosted on: https://legacy-tasking-system.000webhostapp.com/www/
