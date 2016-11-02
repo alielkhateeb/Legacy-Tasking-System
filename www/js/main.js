@@ -123,5 +123,7 @@ function getAction(taskSpan){
 }
 
 function reloadTasks(){
-    $.nette.ajax({url: '/\homepage/\?do=reloadTasks'});
+    pageNumber = $('.pagination').find('.active').data('pageNumber');
+    if(!pageNumber)pageNumber=1;
+    $.nette.ajax({url: '/\homepage/\?do=reloadTasks&pageNumber='+pageNumber});
 }

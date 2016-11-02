@@ -7,6 +7,7 @@ use Nette\Database\Context;
 
 class Task extends Nette\Object{
     const TABLE_TASKS = 'tasks';
+    const ITEMS_PER_PAGE = 20;
     const STATUS_IN_PROGRESS = 0;
     const STATUS_DONE = 1;
     const STATUS_COMPLETE = 2;
@@ -14,8 +15,15 @@ class Task extends Nette\Object{
     /** @var Nette\Database\Context */
     private $database;
 
+    /** @var Total Number of pages */
+    public $numberOfPages;
+
+    /** @var Current selected page */
+    public $currentPage;
+
     public function __construct(Nette\Database\Context $database){
         $this->database = $database;
+        $this->currentPage = 1;
     }
 
     /**
@@ -64,7 +72,7 @@ class Task extends Nette\Object{
     }
 
     
-    public function getTasks($filter){
+    public function getTasks($filter, $currentPage=1){
         $taskRows = $this->database->table(self::TABLE_TASKS)->order('id')->fetchAll();
         $tasks = array();
         foreach($taskRows as $taskRow){
@@ -74,8 +82,9 @@ class Task extends Nette\Object{
         if(count($filter) != 3){ // Not all statuses selected
             $tasks = $this->filterTasks($tasks, $filter);
         }
-
-        return $tasks;
+        $this->numberOfPages = ceil(count($tasks)/self::ITEMS_PER_PAGE);
+        //echo $currentPage;
+        return array_slice($tasks, ($currentPage-1)*self::ITEMS_PER_PAGE, self::ITEMS_PER_PAGE);
     }
 
     private function getTaskById($taskId){

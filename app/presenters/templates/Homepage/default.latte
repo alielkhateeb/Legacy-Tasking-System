@@ -75,6 +75,28 @@
                         </div>
                     </span>
                 {/foreach}
+                <!--Pagination-->
+                {if $numberOfPages > 1}
+                    <nav aria-label="Page navigation" class="text-center">
+                        <ul class="pagination">
+                            <li class="page-item-prev">
+                                <a class="page-link-prev" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                            </li>
+                            {for $i=1 ; $i <= $numberOfPages ; $i++}
+                                <li class="page-item {if $pageNumber == $i}active{/if}" data-page-number="{$i}"><a class="page-link" href="#">{$i}</a></li>
+                            {/for}
+                            <li class="page-item-next" data-number-of-pages="{$numberOfPages}">
+                                <a class="page-link-next" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                {/if}
             {else}
                 <div class="empty-tasks-list">
                     <b ><i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i> There are no Tasks.</b> 

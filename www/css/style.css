@@ -64,6 +64,10 @@ form .error {
     border-width: 1px 0 0 0;
 }
 
+.list-group.list-group-root > .list-group-item{
+    border-bottom-width:1px;
+}
+
 .list-group.list-group-root .list-group-item:hover {
     background-color: #f7f7f7
 }
