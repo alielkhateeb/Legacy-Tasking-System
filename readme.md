@@ -1,4 +1,4 @@
-Database:
+### Database:
 
 * Run the  following SQL statement in MySQL Database:
 
@@ -12,15 +12,15 @@ Database:
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 ```
 
-Setting up Database in the project:
+### Setting up Database in the project:
 
 * Open file: /app/config/config.local.neon
 * Update your parameters.
 
-Backend
+### Backend
 
 * I use Nette PHP framework (Documentation: https://doc.nette.org/en/2.4/). 
 
-Web host
+### Web host
 
 * The project is hosted on: https://legacy-tasking-system.000webhostapp.com/www/
