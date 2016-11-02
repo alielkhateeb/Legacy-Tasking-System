@@ -2,13 +2,13 @@ Database:
 
 -	Run the  following SQL statement in MySQL Database:
 
-CREATE TABLE IF NOT EXISTS `tasks` ( 
-`id` int(11) NOT NULL AUTO_INCREMENT, 
-`title` varchar(255) NOT NULL, 
-`status` tinyint(1) NOT NULL DEFAULT '0', 
-`parent_id` int(11) NOT NULL DEFAULT '0', 
-PRIMARY KEY (`id`) 
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+    CREATE TABLE IF NOT EXISTS `tasks` ( 
+    `id` int(11) NOT NULL AUTO_INCREMENT, 
+    `title` varchar(255) NOT NULL, 
+    `status` tinyint(1) NOT NULL DEFAULT '0', 
+    `parent_id` int(11) NOT NULL DEFAULT '0', 
+    PRIMARY KEY (`id`) 
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 Setting up Database in the project:
 
