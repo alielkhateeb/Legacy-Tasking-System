@@ -2,8 +2,8 @@ parameters:
 
 
 database:
-	dsn: 'mysql:host=localhost;dbname=localhost'
-	user: root
-	password: root
+	dsn: 'mysql:host=localhost;dbname=id126432_legacytaskingsystem'
+	user: id126432_alielkhateeb
+	password: admin
 	options:
 		lazy: yes

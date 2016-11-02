@@ -28,7 +28,7 @@ $('.addTaskModalConfirm').on('click', function(e){
     if(!valid)return;
 
     $.nette.ajax({
-        url: "/\homepage/\?do=addTask",
+        url: "/\www/\homepage/\?do=addTask",
         data: {taskName: taskName, taskParentId: taskParentId},
         success: function(response){
             if(response.result){

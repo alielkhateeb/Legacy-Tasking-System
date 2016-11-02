@@ -53,7 +53,7 @@ $('.filter').on("click", function(e){
     thisButton.button('loading');
     var selected = $.map($('.filter-selected').find("option:selected"), function(o) { return o["value"]; });
     $.nette.ajax({
-        url: "/\homepage/\?do=filterTasks",
+        url: "/\www/\homepage/\?do=filterTasks",
         data: {filter: selected},
         success: function(){
             thisButton.button('reset');
@@ -72,7 +72,7 @@ $('.all-tasks').on('click', '.mark-in-progress', function(e){
         return;
     }
     $.nette.ajax({
-        url: "/\homepage/\?do=markInProgress",
+        url: "/\www/\homepage/\?do=markInProgress",
         data: {taskId: taskId},
         success: function(response){
             if(response.result){
@@ -95,7 +95,7 @@ $('.all-tasks').on('click', '.mark-done', function(e){
     var taskId = (taskSpan.data('id'));
     var action = getAction(taskSpan); // If it has no children mark complete
     $.nette.ajax({
-        url: "/\homepage/\?do="+action,
+        url: "/\www/\homepage/\?do="+action,
         data: {taskId: taskId},
         success: function(response){
             if(response.result){
@@ -125,5 +125,5 @@ function getAction(taskSpan){
 function reloadTasks(){
     pageNumber = $('.pagination').find('.active').data('pageNumber');
     if(!pageNumber)pageNumber=1;
-    $.nette.ajax({url: '/\homepage/\?do=reloadTasks&pageNumber='+pageNumber});
+    $.nette.ajax({url: '/\www/\homepage/\?do=reloadTasks&pageNumber='+pageNumber});
 }
