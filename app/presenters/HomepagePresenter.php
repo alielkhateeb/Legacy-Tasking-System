@@ -57,8 +57,13 @@ class HomepagePresenter extends BasePresenter
         $this->redrawControl("allTasks");
     }
 
-    public function handleAddTask($taskName, $taskParentID){
-        $response = $this->task->addTask($taskName,$taskParentID);
+    public function handleAddTask($taskName, $taskParentId){
+        $response = $this->task->addTask($taskName,$taskParentId);
+        $this->sendResponse(new JsonResponse($response));
+    }
+
+    public function handleEditTask($taskId, $taskName, $taskParentId){
+        $response = $this->task->editTask($taskId, $taskName, $taskParentId);
         $this->sendResponse(new JsonResponse($response));
     }
 }

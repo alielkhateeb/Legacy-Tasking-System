@@ -75,3 +75,22 @@ form .error {
 .list-group-item .glyphicon {
     margin-right: 5px;
 }
+
+.mark-done {
+    padding-left:16px;
+}
+
+.mark-in-progress {
+    padding-left:15px;
+}
+
+.empty-tasks-list {
+    padding-left: 15px;
+    height:50px;
+    display: flex;
+    align-items: center;
+}
+
+.no-padding-left {
+    padding-left: 0px!important;
+}

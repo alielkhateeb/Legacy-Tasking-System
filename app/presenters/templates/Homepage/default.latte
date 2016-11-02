@@ -55,8 +55,18 @@
                                     <span class="label label-success" title="Children Complete">{$task['childrenStatuses']['complete']}</span>
                                 {/if}
                             {/if}
+                            {if !$task['childrenCount']}
+                                <i class="fa fa-leaf" title="Leaf"></i>
+                            {/if}
                         </b>
                         <div class="pull-right">
+                            <button class="btn btn-default btn-xs" title="Edit Task" data-toggle="modal" 
+                                    data-target="#editTaskModal" 
+                                    data-task-id="{$task['id']}" 
+                                    data-task-name="{$task['title']}" 
+                                    data-task-parent-id="{$task['parent_id']}">
+                                <i class="fa fa-pencil fa-lg"></i>
+                            </button>
                             {if $task['status']}
                                 <a href="#" title="Mark In Progress" class="mark-in-progress"><i class="fa fa-check-square-o fa-lg"></i></a>
                             {else}
@@ -66,7 +76,7 @@
                     </span>
                 {/foreach}
             {else}
-                <div style="padding-left: 15px; height:50px; display: flex; align-items: center;">
+                <div class="empty-tasks-list">
                     <b ><i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i> There are no Tasks.</b> 
                 </div>
             {/if}
@@ -85,14 +95,41 @@
                                 <div class="col-md-8">
                                     <input type="text" class="form-control addTaskName" placeholder="Name">
                                 </div>
-                                <div class="col-md-4" style="padding-left:0px">
-                                    <input type="text" class="form-control addTaskParentID" placeholder="Parent ID (Optional)">
+                                <div class="col-md-4 no-padding-left">
+                                    <input type="text" class="form-control addTaskParentId" placeholder="Parent ID (Optional)">
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-success addTaskModalConfirm" disabled>Add</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="editTaskModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Edit Task</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control editTaskName" placeholder="Name">
+                                </div>
+                                <div class="col-md-4 no-padding-left">
+                                    <input type="text" class="form-control editTaskParentId" placeholder="Parent ID (Optional)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success editTaskModalConfirm" disabled>Save</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
