@@ -1,58 +1,24 @@
-Nette Sandbox
-=============
+Database:
 
-This is a simple pre-packaged and pre-configured application using the [Nette](https://nette.org)
-that you can use as the starting point for your new applications.
+-	Run the  following SQL statement in MySQL Database:
 
-[Nette](https://nette.org) is a popular tool for PHP web development.
-It is designed to be the most usable and friendliest as possible. It focuses
-on security and performance and is definitely one of the safest PHP frameworks.
+CREATE TABLE IF NOT EXISTS `tasks` ( 
+`id` int(11) NOT NULL AUTO_INCREMENT, 
+`title` varchar(255) NOT NULL, 
+`status` tinyint(1) NOT NULL DEFAULT '0', 
+`parent_id` int(11) NOT NULL DEFAULT '0', 
+PRIMARY KEY (`id`) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
+Setting up Database in the project:
 
-Installation
-------------
+-	Open file: /app/config/config.local.neon
+-	Update your parameters.
 
-The best way to install Web Project is using Composer. If you don't have Composer yet,
-download it following [the instructions](https://doc.nette.org/composer). Then use command:
+Backend
 
-	composer create-project nette/sandbox path/to/install
-	cd path/to/install
+I use Nette PHP framework (Documentation: https://doc.nette.org/en/2.4/). 
 
+Web host
 
-Make directories `temp/` and `log/` writable.
-
-
-Web Server Setup
-----------------
-
-The simplest way to get started is to start the built-in PHP server in the root directory of your project:
-
-	php -S localhost:8000 -t www
-
-Then visit `http://localhost:8000` in your browser to see the welcome page.
-
-For Apache or Nginx, setup a virtual host to point to the `www/` directory of the project and you
-should be ready to go.
-
-It is CRITICAL that whole `app/`, `log/` and `temp/` directories are not accessible directly
-via a web browser. See [security warning](https://nette.org/security-warning).
-
-
-Requirements
-------------
-
-PHP 5.6 or higher. To check whether server configuration meets the minimum requirements for
-Nette Framework browse to the directory `/checker` in your project root (i.e. `http://localhost:8000/checker`).
-
-
-Adminer
--------
-
-[Adminer](https://www.adminer.org/) is full-featured database management tool written in PHP and it is part of this Sandbox.
-To use it, browse to the subdirectory `/adminer` in your project root (i.e. `http://localhost:8000/adminer`).
-
-
-License
--------
-- Nette: New BSD License or GPL 2.0 or 3.0
-- Adminer: Apache License 2.0 or GPL 2
+The project is hosted on: https://legacy-tasking-system.000webhostapp.com/www/
