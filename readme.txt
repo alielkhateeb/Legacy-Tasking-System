@@ -2,6 +2,7 @@ Database:
 
 -	Run the  following SQL statement in MySQL Database:
 
+```SQL
     CREATE TABLE IF NOT EXISTS `tasks` ( 
     `id` int(11) NOT NULL AUTO_INCREMENT, 
     `title` varchar(255) NOT NULL, 
@@ -9,6 +10,7 @@ Database:
     `parent_id` int(11) NOT NULL DEFAULT '0', 
     PRIMARY KEY (`id`) 
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+```
 
 Setting up Database in the project:
 
