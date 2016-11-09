@@ -2,7 +2,7 @@ parameters:
 
 
 database:
-	dsn: 'mysql:host=localhost;dbname=localhost'
+	dsn: 'mysql:host=localhost;dbname=sys'
 	user: root
 	password: root
 	options:
